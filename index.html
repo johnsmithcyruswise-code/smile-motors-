@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile Motors | Premium SUVs & Executive Fleet Uganda</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. CSS VARIABLES & THEME DEFINITIONS - GREEN & WHITE SIGNATURE THEME
+           ========================================================================== */
+        :root {
+            /* Light Theme: Clean White, Crisp Emerald & Forest Accents */
+            --bg-primary: #f4f9f5;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #e8f5e9;
+            --text-primary: #0a2918;
+            --text-secondary: #2d5a3f;
+            --text-muted: #6b8e78;
+            --accent-primary: #059669;    /* Bright Emerald Green */
+            --accent-dark: #0f5132;       /* Deep Forest Green */
+            --accent-hover: #047857;
+            --accent-gold: #d97706;       /* Gold Accent for luxury badges */
+            --border-color: #c8e6c9;
+            --card-shadow: 0 10px 30px -10px rgba(15, 81, 50, 0.12);
+            --header-bg: rgba(255, 255, 255, 0.90);
+            --modal-bg: rgba(255, 255, 255, 0.98);
+            --glass-border: rgba(16, 185, 129, 0.2);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 24px;
+            --transition-speed: 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme: Deep Emerald / Midnight Forest & Crisp Mint Highlights */
+            --bg-primary: #06150d;
+            --bg-secondary: #0d2417;
+            --bg-tertiary: #133322;
+            --text-primary: #f0fdf4;
+            --text-secondary: #a7f3d0;
+            --text-muted: #4ade80;
+            --accent-primary: #10b981;    /* Vibrant Mint/Emerald */
+            --accent-dark: #059669;
+            --accent-hover: #34d399;
+            --accent-gold: #fbbf24;
+            --border-color: #1b4d32;
+            --card-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
+            --header-bg: rgba(13, 36, 23, 0.90);
+            --modal-bg: rgba(13, 36, 23, 0.98);
+            --glass-border: rgba(16, 185, 129, 0.15);
+        }
+
+        /* ==========================================================================
+           2. GLOBAL RESET & BASE STYLES
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input, select {
+            font-family: inherit;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ==========================================================================
+           3. NAVBAR & TOP TOOLBAR
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all var(--transition-speed);
+        }
+
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 76px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .brand-logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-dark));
+            color: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .control-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 9px 14px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .currency-select {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 9px 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.875rem;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .currency-select:focus {
+            border-color: var(--accent-primary);
+        }
+
+        /* ==========================================================================
+           4. HERO & YOUTUBE SHORTS SPLIT DRAPE REVEAL SLIDESHOW
+           ========================================================================== */
+        .hero-section {
+            padding-top: 100px;
+            padding-bottom: 50px;
+            position: relative;
+        }
+
+        .hero-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            color: var(--accent-primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-size: 2.7rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Split Slider Container */
+        .split-slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 520px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            background: #020d07;
+        }
+
+        .slide-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+        }
+
+        .slide-layer.bottom-layer {
+            z-index: 1;
+        }
+
+        .slide-layer.top-layer {
+            z-index: 2;
+            width: 50%; /* Modified dynamically via JS */
+            overflow: hidden;
+            border-right: 3px solid var(--accent-primary);
+        }
+
+        .slide-layer.top-layer .inner-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Overlay Badge Text */
+        .slide-badge {
+            position: absolute;
+            bottom: 25px;
+            padding: 14px 22px;
+            background: rgba(6, 21, 13, 0.85);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .slide-badge.left { left: 25px; }
+        .slide-badge.right { right: 25px; text-align: right; }
+
+        .slide-badge h4 {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+            color: #ffffff;
+        }
+
+        .slide-badge p {
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+
+        /* Interactive Drag Handle */
+        .split-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--accent-primary);
+            z-index: 10;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+            box-shadow: 0 0 18px rgba(16, 185, 129, 0.9);
+        }
+
+        .handle-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ffffff;
+        }
+
+        /* Slideshow Controls */
+        .slider-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 18px;
+        }
+
+        .slide-indicators {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent-primary);
+            width: 32px;
+            border-radius: 12px;
+        }
+
+        /* ==========================================================================
+           5. FLEET SHOWROOM SECTION
+           ========================================================================== */
+        .section-title {
+            font-size: 2.1rem;
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .vehicle-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-primary);
+        }
+
+        .card-image-wrap {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: #020d07;
+        }
+
+        .card-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .vehicle-card:hover .card-image-wrap img {
+            transform: scale(1.06);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(6, 21, 13, 0.85);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid var(--accent-primary);
+            backdrop-filter: blur(4px);
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .vehicle-name {
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .vehicle-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .spec-item i {
+            color: var(--accent-primary);
+        }
+
+        .price-tag {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+        }
+
+        .card-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-dark));
+            color: #ffffff;
+            border: none;
+            padding: 11px 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 11px 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* ==========================================================================
+           6. FINANCING CALCULATOR
+           ========================================================================== */
+        .calc-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            margin-bottom: 60px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-primary);
+        }
+
+        .calc-result-box {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .monthly-payment {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            margin: 12px 0;
+        }
+
+        /* ==========================================================================
+           7. FLOATING ACTION BUTTONS & GEMINI AI CHAT DRAWER
+           ========================================================================== */
+        .fab-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 56px;
+            height: 56px;
+            background: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 900;
+            transition: transform 0.3s ease;
+        }
+
+        .fab-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        .fab-ai {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-dark));
+            color: #ffffff;
+            padding: 14px 22px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            z-index: 900;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .fab-ai:hover {
+            transform: scale(1.05);
+        }
+
+        /* AI Drawer Window */
+        .ai-drawer {
+            position: fixed;
+            bottom: 95px;
+            right: 25px;
+            width: 400px;
+            max-width: calc(100vw - 40px);
+            height: 530px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            z-index: 950;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .ai-drawer.open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .ai-header {
+            background: var(--bg-tertiary);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ai-messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-bubble {
+            max-width: 85%;
+            padding: 11px 15px;
+            border-radius: 14px;
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        .chat-bubble.bot {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid var(--border-color);
+        }
+
+        .chat-bubble.user {
+            background: var(--accent-primary);
+            color: #ffffff;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .ai-input-area {
+            padding: 12px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+        }
+
+        .ai-input-area input {
+            flex: 1;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 9px 14px;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        /* ==========================================================================
+           8. SPEC & AUTO-BILLER MODAL
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(2, 13, 7, 0.75);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 580px;
+            padding: 32px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .split-slider-wrapper { height: 380px; }
+            .calc-grid { grid-template-columns: 1fr; }
+            .slide-badge h4 { font-size: 1rem; }
+            .slide-badge p { font-size: 0.75rem; }
+            .fleet-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR HEADER -->
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <a href="#" class="brand-logo">
+                <div class="brand-logo-icon">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+                <span>SMILE MOTORS</span>
+            </a>
+
+            <div class="nav-controls">
+                <!-- Light/Dark Mode Toggle -->
+                <button class="control-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Theme">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    <span id="themeLabel">Dark Mode</span>
+                </button>
+
+                <!-- Dynamic Currency Selector -->
+                <select class="currency-select" id="currencySelector" onchange="changeCurrency(this.value)">
+                    <option value="UGX" selected>UGX (Shill)</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                    <option value="KES">KES (KSh)</option>
+                    <option value="TZS">TZS (TSh)</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container">
+
+        <!-- HERO & SPLIT SLIDESHOW -->
+        <section class="hero-section">
+            <div class="hero-header">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-shield-halved"></i> Uganda's Premier Luxury SUV Showroom
+                </div>
+                <h1 class="hero-title">Unrivaled Automotive Excellence</h1>
+                <p class="hero-subtitle">Drag the interactive slider to reveal the factory stock and custom luxury specs of Uganda's most coveted SUV and truck fleet.</p>
+            </div>
+
+            <!-- Split Drape Reveal Container -->
+            <div class="split-slider-wrapper" id="splitSlider">
+                <!-- Bottom Image Layer (Factory/Stock State) -->
+                <div class="slide-layer bottom-layer" id="bottomLayer"></div>
+                <div class="slide-badge right">
+                    <h4 id="bottomTitle">Toyota Land Cruiser LC300</h4>
+                    <p id="bottomPrice">UGX 450,000,000</p>
+                </div>
+
+                <!-- Top Clip Image Layer (Custom Tuned / Exclusive State) -->
+                <div class="slide-layer top-layer" id="topLayer">
+                    <div class="inner-img" id="topLayerInner"></div>
+                </div>
+                <div class="slide-badge left">
+                    <h4 id="topTitle">Custom Matte Edition</h4>
+                    <p id="topSubtitle">Executive Armor & Tuning</p>
+                </div>
+
+                <!-- Interactive Drag Handle -->
+                <div class="split-handle" id="splitHandle">
+                    <div class="handle-button">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slideshow Navigation Controls -->
+            <div class="slider-controls">
+                <button class="btn-secondary" onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                <div class="slide-indicators" id="slideIndicators"></div>
+                <button class="btn-secondary" onclick="nextSlide()">Next <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <!-- VEHICLE SHOWROOM -->
+        <section id="showroom" style="padding: 30px 0 60px 0;">
+            <h2 class="section-title">Trending Executive Fleet</h2>
+            <p class="section-subtitle">Verified inventory ready for immediate delivery in Kampala with duty-paid guarantees.</p>
+
+            <div class="fleet-grid" id="fleetGrid">
+                <!-- Vehicle Cards Dynamically Rendered Here -->
+            </div>
+        </section>
+
+        <!-- FINANCING CALCULATOR -->
+        <section class="calc-section">
+            <h2 class="section-title" style="margin-bottom: 8px;"><i class="fa-solid fa-calculator" style="color:var(--accent-primary)"></i> Auto Financing & Import Biller</h2>
+            <p class="section-subtitle" style="margin-bottom: 24px;">Calculate monthly flexible lease terms or estimated import duty costs.</p>
+            
+            <div class="calc-grid">
+                <div>
+                    <div class="form-group">
+                        <label>Select Vehicle Model</label>
+                        <select class="form-control" id="calcVehicleSelect" onchange="updateCalcFromSelect()">
+                            <!-- Generated via JS -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Down Payment (<span id="currencySymbolLabel">UGX</span>)</label>
+                        <input type="number" class="form-control" id="calcDownPayment" value="50000000" oninput="calculateFinancing()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Loan Duration (Months)</label>
+                        <select class="form-control" id="calcTenure" onchange="calculateFinancing()">
+                            <option value="12">12 Months (1 Year)</option>
+                            <option value="24" selected>24 Months (2 Years)</option>
+                            <option value="36">36 Months (3 Years)</option>
+                            <option value="48">48 Months (4 Years)</option>
+                            <option value="60">60 Months (5 Years)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calc-result-box">
+                    <span style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 700;">Estimated Monthly Payment</span>
+                    <div class="monthly-payment" id="calcMonthlyResult">UGX 0</div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Standard competitive 14% APR commercial bank financing rate.</p>
+                    <button class="btn-primary" onclick="openOrderModal('Financing Loan Plan')">Apply For Financing</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING ACTION BUTTONS -->
+    <a href="https://wa.me/256700000000" target="_blank" class="fab-whatsapp" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <button class="fab-ai" onclick="toggleAIDrawer()">
+        <i class="fa-solid fa-robot"></i> Ask AI
+    </button>
+
+    <!-- GEMINI AUTOMOTIVE AI DRAWER -->
+    <div class="ai-drawer" id="aiDrawer">
+        <div class="ai-header">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <i class="fa-solid fa-sparkles" style="color:var(--accent-primary)"></i>
+                <strong>Smile Concierge AI</strong>
+            </div>
+            <button class="close-modal" style="position:static;" onclick="toggleAIDrawer()">&times;</button>
+        </div>
+        <div class="ai-messages" id="aiMessages">
+            <div class="chat-bubble bot">
+                Hello! I am your Smile Motors Automotive AI Assistant. Ask me about vehicle specs, URA import duties in Uganda, shipping logistics, or live pricing quotes!
+            </div>
+        </div>
+        <div class="ai-input-area">
+            <input type="text" id="aiInput" placeholder="Ask e.g. 'What is the import duty for LC300?'..." onkeypress="handleAIKeyPress(event)">
+            <button class="btn-primary" style="padding: 8px 14px; flex:none;" onclick="sendAIMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- BOOKING / AUTO-BILLER MODAL -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeOrderModal()">&times;</button>
+            <h3 class="brand-font" style="font-size: 1.5rem; margin-bottom: 6px;" id="modalVehicleTitle">Reserve Vehicle</h3>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 20px;">Complete your details to receive an official instant invoice from Smile Motors.</p>
+
+            <form id="invoiceForm" onsubmit="handleGenerateInvoice(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" required placeholder="e.g. David Mukasa">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" required placeholder="+256 700 000 000">
+                </div>
+                <div class="form-group">
+                    <label>Total Price (Auto-Billed)</label>
+                    <input type="text" class="form-control" id="modalVehiclePrice" readonly style="font-weight: 700; color: var(--accent-primary);">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Confirm & Generate Invoice</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        /* ==========================================================================
+           1. DATA MODELS & CURRENCY CONFIGURATION
+           ========================================================================== */
+        const CURRENCIES = {
+            UGX: { symbol: 'UGX ', rate: 1 },
+            USD: { symbol: '$', rate: 0.00027 },
+            EUR: { symbol: '€', rate: 0.00025 },
+            GBP: { symbol: '£', rate: 0.00021 },
+            KES: { symbol: 'KSh ', rate: 0.035 },
+            TZS: { symbol: 'TSh ', rate: 0.71 }
+        };
+
+        let currentCurrency = 'UGX';
+
+        const VEHICLES = [
+            {
+                id: 'maserati_q4',
+                name: 'Maserati Levante Q4 Modena S',
+                year: '2025 Brand New',
+                priceUGX: 520000000,
+                engine: '3.0L Twin-Turbo V6 (424 HP)',
+                transmission: '8-Speed ZF Auto AWD',
+                fuel: 'Petrol',
+                topImg: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80',
+                bottomImg: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
+                badge: '🔥 New Arrival 2025'
+            },
+            {
+                id: 'lc300',
+                name: 'Toyota Land Cruiser LC300 V6',
+                year: '2024 Model',
+                priceUGX: 450000000,
+                engine: '3.5L Twin-Turbo V6',
+                transmission: '10-Speed Auto',
+                fuel: 'Petrol',
+                topImg: 'https://images.unsplash.com/photo-1594502184342-2e12f877aa73?auto=format&fit=crop&w=1200&q=80',
+                bottomImg: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80',
+                badge: 'Top Seller'
+            },
+            {
+                id: 'prado_v8',
+                name: 'Toyota Prado V8 Executive',
+                year: '2023 Model',
+                priceUGX: 250000000,
+                engine: '4.6L V8 Petrol',
+                transmission: '6-Speed Auto',
+                fuel: 'Petrol',
+                topImg: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80',
+                bottomImg: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
+                badge: 'Executive Choice'
+            },
+            {
+                id: 'g63',
+                name: 'Mercedes-AMG G63 Bi-Turbo',
+                year: '2024 Model',
+                priceUGX: 650000000,
+                engine: '4.0L V8 Bi-Turbo',
+                transmission: 'AMG SPEEDSHIFT 9G',
+                fuel: 'Petrol',
+                topImg: 'https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=1200&q=80',
+                bottomImg: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80',
+                badge: 'Ultra Luxury'
+            },
+            {
+                id: 'range_rover',
+                name: 'Range Rover Vogue Autobiography',
+                year: '2024 Model',
+                priceUGX: 580000000,
+                engine: '4.4L Twin-Turbo V8',
+                transmission: '8-Speed Auto',
+                fuel: 'Petrol',
+                topImg: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80',
+                bottomImg: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80',
+                badge: 'Flagship'
+            },
+            {
+                id: 'defender110',
+                name: 'Land Rover Defender 110 X-Dynamic',
+                year: '2024 Model',
+                priceUGX: 380000000,
+                engine: '3.0L MHEV Turbo I6',
+                transmission: '8-Speed Auto',
+                fuel: 'Petrol',
+                topImg: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80',
+                bottomImg: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80',
+                badge: 'Offroad Master'
+            },
+            {
+                id: 'hilux_rocco',
+                name: 'Toyota Hilux Revo Rocco 4x4',
+                year: '2024 Model',
+                priceUGX: 185000000,
+                engine: '2.8L Turbo Diesel',
+                transmission: '6-Speed Auto',
+                fuel: 'Diesel',
+                topImg: 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1200&q=80',
+                bottomImg: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80',
+                badge: 'Rugged Pickup'
+            },
+            {
+                id: 'harrier',
+                name: 'Toyota Harrier Dynamic Force',
+                year: '2022 Model',
+                priceUGX: 140000000,
+                engine: '2.0L Direct Shift CVT',
+                transmission: 'Automatic',
+                fuel: 'Petrol',
+                topImg: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80',
+                bottomImg: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80',
+                badge: 'Urban Luxury'
+            },
+            {
+                id: 'gle450',
+                name: 'Mercedes-Benz GLE 450 4MATIC',
+                year: '2023 Model',
+                priceUGX: 390000000,
+                engine: '3.0L EQ Boost Turbo',
+                transmission: '9G-TRONIC Auto',
+                fuel: 'Petrol',
+                topImg: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80',
+                bottomImg: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80',
+                badge: 'Executive SUV'
+            }
+        ];
+
+        /* ==========================================================================
+           2. FORMATTING & CURRENCY HELPER
+           ========================================================================== */
+        function formatPrice(amountUGX) {
+            const currencyObj = CURRENCIES[currentCurrency];
+            const converted = amountUGX * currencyObj.rate;
+            return currencyObj.symbol + converted.toLocaleString(undefined, {
+                maximumFractionDigits: currentCurrency === 'UGX' ? 0 : 2
+            });
+        }
+
+        function changeCurrency(val) {
+            currentCurrency = val;
+            renderFleet();
+            updateSliderInfo();
+            calculateFinancing();
+            document.getElementById('currencySymbolLabel').innerText = val;
+        }
+
+        /* ==========================================================================
+           3. AUTOMATIC TIME-BASED LIGHT/DARK MODE & TOGGLE
+           ========================================================================== */
+        function initTimeBasedTheme() {
+            const currentHour = new Date().getHours();
+            // Automatically switch to dark mode between 6:00 PM (18:00) and 6:00 AM
+            const isNight = currentHour >= 18 || currentHour < 6;
+            setTheme(isNight ? 'dark' : 'light');
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            const themeIcon = document.getElementById('themeIcon');
+            const themeLabel = document.getElementById('themeLabel');
+            if (theme === 'dark') {
+                themeIcon.className = 'fa-solid fa-sun';
+                themeLabel.innerText = 'Light Mode';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+                themeLabel.innerText = 'Dark Mode';
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        }
+
+        initTimeBasedTheme();
+
+        /* ==========================================================================
+           4. SPLIT DRAPE REVEAL SLIDESHOW LOGIC
+           ========================================================================== */
+        let currentSlideIndex = 0;
+        let isDraggingHandle = false;
+        let slideAutoplayInterval = null;
+
+        const splitSlider = document.getElementById('splitSlider');
+        const splitHandle = document.getElementById('splitHandle');
+        const topLayer = document.getElementById('topLayer');
+        const topLayerInner = document.getElementById('topLayerInner');
+        const bottomLayer = document.getElementById('bottomLayer');
+
+        function initSplitSlider() {
+            updateSlideContent();
+            renderIndicators();
+            setupDragEvents();
+            startAutoplay();
+        }
+
+        function updateSlideContent() {
+            const slide = VEHICLES[currentSlideIndex];
+            topLayerInner.style.backgroundImage = `url('${slide.topImg}')`;
+            bottomLayer.style.backgroundImage = `url('${slide.bottomImg}')`;
+
+            document.getElementById('bottomTitle').innerText = slide.name;
+            document.getElementById('bottomPrice').innerText = formatPrice(slide.priceUGX);
+            document.getElementById('topTitle').innerText = `${slide.name} (Exclusive Trim)`;
+            document.getElementById('topSubtitle').innerText = `${slide.badge} Specs`;
+
+            updateIndicators();
+        }
+
+        function updateSliderInfo() {
+            const slide = VEHICLES[currentSlideIndex];
+            document.getElementById('bottomPrice').innerText = formatPrice(slide.priceUGX);
+        }
+
+        function renderIndicators() {
+            const container = document.getElementById('slideIndicators');
+            container.innerHTML = VEHICLES.map((_, idx) => `
+                <div class="dot ${idx === currentSlideIndex ? 'active' : ''}" onclick="goToSlide(${idx})"></div>
+            `).join('');
+        }
+
+        function updateIndicators() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlideIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % VEHICLES.length;
+            updateSlideContent();
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + VEHICLES.length) % VEHICLES.length;
+            updateSlideContent();
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSlideContent();
+        }
+
+        function startAutoplay() {
+            stopAutoplay();
+            slideAutoplayInterval = setInterval(() => {
+                if (!isDraggingHandle) {
+                    nextSlide();
+                }
+            }, 5500);
+        }
+
+        function stopAutoplay() {
+            if (slideAutoplayInterval) clearInterval(slideAutoplayInterval);
+        }
+
+        // DRAG HANDLE MOUSE & TOUCH EVENT BINDINGS
+        function setupDragEvents() {
+            const updateClipPosition = (clientX) => {
+                const rect = splitSlider.getBoundingClientRect();
+                let x = clientX - rect.left;
+                if (x < 0) x = 0;
+                if (x > rect.width) x = rect.width;
+
+                const percentage = (x / rect.width) * 100;
+                topLayer.style.width = `${percentage}%`;
+                topLayerInner.style.width = `${rect.width}px`;
+                splitHandle.style.left = `${percentage}%`;
+            };
+
+            const onMove = (e) => {
+                if (!isDraggingHandle) return;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                updateClipPosition(clientX);
+            };
+
+            const onStart = () => {
+                isDraggingHandle = true;
+                stopAutoplay();
+            };
+
+            const onEnd = () => {
+                isDraggingHandle = false;
+                startAutoplay();
+            };
+
+            splitHandle.addEventListener('mousedown', onStart);
+            window.addEventListener('mousemove', onMove);
+            window.addEventListener('mouseup', onEnd);
+
+            splitHandle.addEventListener('touchstart', onStart);
+            window.addEventListener('touchmove', onMove);
+            window.addEventListener('touchend', onEnd);
+
+            window.addEventListener('resize', () => {
+                const rect = splitSlider.getBoundingClientRect();
+                topLayerInner.style.width = `${rect.width}px`;
+            });
+        }
+
+        initSplitSlider();
+
+        /* ==========================================================================
+           5. FLEET SHOWROOM RENDER & FINANCING LOGIC
+           ========================================================================== */
+        function renderFleet() {
+            const fleetGrid = document.getElementById('fleetGrid');
+            const selectBox = document.getElementById('calcVehicleSelect');
+
+            fleetGrid.innerHTML = VEHICLES.map(car => `
+                <div class="vehicle-card">
+                    <div class="card-image-wrap">
+                        <img src="${car.topImg}" alt="${car.name}">
+                        <span class="card-badge">${car.badge}</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="vehicle-name">${car.name}</h3>
+                        <div class="vehicle-specs">
+                            <span class="spec-item"><i class="fa-solid fa-calendar"></i> ${car.year}</span>
+                            <span class="spec-item"><i class="fa-solid fa-gauge"></i> ${car.engine}</span>
+                            <span class="spec-item"><i class="fa-solid fa-gas-pump"></i> ${car.fuel}</span>
+                        </div>
+                        <div class="price-tag">${formatPrice(car.priceUGX)}</div>
+                        <div class="card-actions">
+                            <button class="btn-primary" onclick="openOrderModal('${car.name}', ${car.priceUGX})">Reserve Vehicle</button>
+                            <button class="btn-secondary" onclick="openAIQuery('Tell me more about ${car.name}')">Ask AI</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            selectBox.innerHTML = VEHICLES.map(car => `
+                <option value="${car.priceUGX}">${car.name} - ${formatPrice(car.priceUGX)}</option>
+            `).join('');
+        }
+
+        function updateCalcFromSelect() {
+            calculateFinancing();
+        }
+
+        function calculateFinancing() {
+            const selectBox = document.getElementById('calcVehicleSelect');
+            const totalPriceUGX = parseFloat(selectBox.value) || VEHICLES[0].priceUGX;
+            const downPayment = parseFloat(document.getElementById('calcDownPayment').value) || 0;
+            const tenureMonths = parseInt(document.getElementById('calcTenure').value) || 24;
+
+            const principal = Math.max(0, totalPriceUGX - downPayment);
+            const annualInterestRate = 0.14; // 14% annual interest
+            const monthlyRate = annualInterestRate / 12;
+
+            let monthlyPayment = 0;
+            if (principal > 0) {
+                monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths)) /
+                                 (Math.pow(1 + monthlyRate, tenureMonths) - 1);
+            }
+
+            document.getElementById('calcMonthlyResult').innerText = formatPrice(monthlyPayment);
+        }
+
+        renderFleet();
+        calculateFinancing();
+
+        /* ==========================================================================
+           6. MODAL & AUTO-BILLER LOGIC
+           ========================================================================== */
+        let activeOrderPrice = 0;
+
+        function openOrderModal(vehicleName, priceUGX = null) {
+            document.getElementById('modalVehicleTitle').innerText = `Reserve ${vehicleName}`;
+            activeOrderPrice = priceUGX || VEHICLES[0].priceUGX;
+            document.getElementById('modalVehiclePrice').value = formatPrice(activeOrderPrice);
+            document.getElementById('orderModal').classList.add('open');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.remove('open');
+        }
+
+        function handleGenerateInvoice(e) {
+            e.preventDefault();
+            const currencySymbol = CURRENCIES[currentCurrency].symbol;
+            alert(`✅ Official Smile Motors Invoice Generated!\n\nTotal Price: ${formatPrice(activeOrderPrice)}\nStatus: Reserved & Duty Certified\n\nOur sales representative will reach out via phone immediately.`);
+            closeOrderModal();
+        }
+
+        /* ==========================================================================
+           7. GEMINI AUTOMOTIVE CONCIERGE CHAT ENGINE
+           ========================================================================== */
+        function toggleAIDrawer() {
+            const drawer = document.getElementById('aiDrawer');
+            drawer.classList.toggle('open');
+        }
+
+        function openAIQuery(queryText) {
+            const drawer = document.getElementById('aiDrawer');
+            if (!drawer.classList.contains('open')) {
+                drawer.classList.add('open');
+            }
+            document.getElementById('aiInput').value = queryText;
+            sendAIMessage();
+        }
+
+        function handleAIKeyPress(e) {
+            if (e.key === 'Enter') sendAIMessage();
+        }
+
+        function sendAIMessage() {
+            const input = document.getElementById('aiInput');
+            const query = input.value.trim();
+            if (!query) return;
+
+            appendChatMessage(query, 'user');
+            input.value = '';
+
+            setTimeout(() => {
+                const response = generateAIResponse(query);
+                appendChatMessage(response, 'bot');
+            }, 500);
+        }
+
+        function appendChatMessage(text, sender) {
+            const container = document.getElementById('aiMessages');
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble ${sender}`;
+            bubble.innerText = text;
+            container.appendChild(bubble);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function generateAIResponse(q) {
+            const lower = q.toLowerCase();
+            
+            if (lower.includes('maserati') || lower.includes('q4') || lower.includes('levante') || lower.includes('ghibli')) {
+                return "The Maserati Levante Q4 Modena S is our newest flagship arrival! Powered by a 3.0L Ferrari-built Twin-Turbo V6 (424 HP) with Intelligent Q4 All-Wheel Drive. Total Duty-Paid Price: " + formatPrice(520000000) + ". Contact us to schedule a private test drive in Kampala!";
+            } else if (lower.includes('duty') || lower.includes('tax') || lower.includes('ura') || lower.includes('import')) {
+                return "In Uganda, URA import duties on SUVs include Import Duty (25%), VAT (18%), Withholding Tax (6%), Environmental Levy (where applicable for older years), and Infrastructure Levy (1.5%). Our quoted prices at Smile Motors include all duty charges paid!";
+            } else if (lower.includes('lc300') || lower.includes('land cruiser')) {
+                return "The Toyota Land Cruiser LC300 features a 3.5L Twin-Turbo V6 engine, 10-speed transmission, and multi-terrain select. Total Price: " + formatPrice(450000000) + ". Ready for immediate delivery in Kampala.";
+            } else if (lower.includes('prado')) {
+                return "The Toyota Prado V8 is equipped with a 4.6L V8 Petrol engine, offering bulletproof durability for East African roads. Price: " + formatPrice(250000000) + ".";
+            } else if (lower.includes('g63') || lower.includes('mercedes') || lower.includes('amg')) {
+                return "The Mercedes-AMG G63 Bi-Turbo delivers 577 HP with iconic design and luxury. Price: " + formatPrice(650000000) + ".";
+            } else if (lower.includes('hilux') || lower.includes('rocco')) {
+                return "The Toyota Hilux Revo Rocco 4x4 is powered by a 2.8L Turbo Diesel engine with high payload capability. Price: " + formatPrice(185000000) + ".";
+            } else if (lower.includes('finance') || lower.includes('loan') || lower.includes('rate')) {
+                return "We partner with top Ugandan commercial banks to offer up to 60 months financing at a 14% annual interest rate. Use our finance calculator to calculate monthly payments!";
+            } else {
+                return "Smile Motors is Uganda's premier luxury vehicle dealership. Check out our brand-new arrival: the Maserati Q4 Twin-Turbo! Ask me about specs, URA import duties, or financing options!";
+            }
+        }
+    </script>
+</body>
+</html>
